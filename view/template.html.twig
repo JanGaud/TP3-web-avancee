@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://getbootstrap.com/docs/5.0/examples/navbar-fixed/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <script src="https://kit.fontawesome.com/e69611a5eb.js" crossorigin="anonymous"></script>
+    <title>Bibliotheque St-James</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets\carousel.css" rel="stylesheet">
+    <link href="assets\bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets\book.png">
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      /*-Navigation-*/
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      /*-Carrousel-*/
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="assets\navbar-top-fixed.css" rel="stylesheet">
+    <link href="assets\carrousel.css" rel="stylesheet" >
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <img class="p-2" src="assets\book.png" alt="">
+        <a class="navbar-brand" href="{{ path }}">Bibliothèque St-James</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path }}livre" tabindex="-1" aria-disabled="true">Livres</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path }}auteur" tabindex="-1" aria-disabled="true">Auteurs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">A propos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+            {% if session['compteActif'] %}
+            <li class="nav-item nav-link">
+              <a href="{{ path }}client">Bonjour {{ session['nomClient'] }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path }}compte/deconnexion">Déconnexion</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ path }}compte">Mon compte</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav> 
+    
+    {% if page %}
+      <nav class="container" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ path }}">Acceuil</a></li>
+          {% for p in page %}
+          <li class="breadcrumb-item active" aria-current="page">{{ p }}</li>
+          {% endfor %}
+        </ol>
+      </nav>
+    {% endif %}
+
+    {% if error %}
+    <div class="container w-50">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+    {% endif %}
+      
+  <div class="container-fluid p-0">
+   
+  {% block page %}
+  
+  {% endblock %}
+  </div>
+    <script src="assets\bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+
+  <footer class="bg-dark text-center text-lg-start text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row mt-4">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Voir d'autres livres</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white"><i class="fas fa-book fa-fw fa-sm me-2"></i>Bestsellers</a>
+            </li>
+            <li>
+              <a href="{{ path }}Livre" class="text-white"><i class="fas fa-book fa-fw fa-sm me-2"></i>Tout les livres</a>
+            </li>
+            <li>
+              <a href="{{ path }}Auteur" class="text-white"><i class="fas fa-user-edit fa-fw fa-sm me-2"></i>Les auteurs</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Bibliothèque St-James</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white">123 Rue Fairmount</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">H0W0X0 MTL</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white"><i class="fas fa-briefcase fa-fw fa-sm me-2"></i>Dons de livres</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Écrivez-nous</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white"><i class="fas fa-envelope fa-fw fa-sm me-2"></i>Par courriel</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white"><i class="fas fa-phone fa-fw fa-sm me-2"></i>Par Téléphone</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2022 Copyright:
+      <a class="text-white" href="#">Bibliothèque</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+<!-- End of .container -->
+</html>
