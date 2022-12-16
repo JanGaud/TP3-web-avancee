@@ -95,6 +95,7 @@
     <!-- Custom styles for this template -->
     <link href="assets\navbar-top-fixed.css" rel="stylesheet">
     <link href="assets\carrousel.css" rel="stylesheet" >
+    <link href="assets\ajustements.css" rel="stylesheet">
   </head>
   <body>
     
@@ -122,6 +123,11 @@
             <li class="nav-item nav-link">
               <a href="{{ path }}client">Bonjour {{ session['nomClient'] }}</a>
             </li>
+                {% if session['admin']%}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path }}admin">Compte Administrateur</a>
+                </li>
+                {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{{ path }}compte/deconnexion">Déconnexion</a>
             </li>
@@ -130,6 +136,7 @@
               <a class="nav-link active" aria-current="page" href="{{ path }}compte">Mon compte</a>
             </li>
             {% endif %}
+            
           </ul>
         </div>
       </div>

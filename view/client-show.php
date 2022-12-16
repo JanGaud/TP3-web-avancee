@@ -8,8 +8,8 @@
 </head>
 <body>
     <main>
-        <p><strong>Nom : </strong>{{client.nom_client}}</p>
-        <p><strong>Adresse : </strong>{{client.adresse}}</p>
+        <p><strong>Nom : </strong>{{ client.nom_client }}</p>
+        <p><strong>Adresse : </strong>{{ client.adresse }}</p>
         <p><strong>Courriel : </strong>{{ client.client_courriel }}</p>
         <p><a href="{{ path }}client/edit/{{client.id}}">Modifier</a></p>
     </main>

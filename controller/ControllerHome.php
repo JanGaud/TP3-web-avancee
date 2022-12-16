@@ -14,12 +14,4 @@ class ControllerHome{
         twig::render("home-error.php");
     }
 
-    public function test(){
-
-      $data =['name' =>'Janis', 
-              'welcome' => 'Welcome'];
-      twig::render("home-index.php", $data);
-
-    }
-
 }

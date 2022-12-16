@@ -1,6 +1,7 @@
 <?php
 RequirePage::requireModel('Crud');
 RequirePage::requireModel('ModelAuteur');
+require("library/config.php");
 
 class ControllerAuteur{
 
@@ -12,7 +13,12 @@ class ControllerAuteur{
     }
 
     public function create(){
-       twig::render('auteur-create.php');
+        if( isset($_SESSION['admin']) && $_SESSION['admin']){
+            twig::render("auteur-create.php");
+        }
+        else{
+            header('location:' . $GLOBALS["path"]);
+        }
     }
 
     public function store(){

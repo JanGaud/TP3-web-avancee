@@ -1,14 +1,20 @@
 <?php
 RequirePage::requireModel('Crud');
 RequirePage::requireModel('ModelClient');
+require("library/config.php");
 
 class ControllerClient{
 
     public function index(){
+        if( isset($_SESSION['compteActif']) && $_SESSION['compteActif']){
         $client = new ModelClient;
         $select = $client->select("idClient");
         twig::render("client-index.php", ['clients' => $select, 
                                         'client_list' => "Liste de Client"]);
+        }
+        else{
+            header('location:' . $GLOBALS["path"]);
+        }
     }
 
     public function create(){

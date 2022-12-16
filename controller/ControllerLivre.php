@@ -1,6 +1,7 @@
 <?php
 RequirePage::requireModel('Crud');
 RequirePage::requireModel('ModelLivre');
+require("library/config.php");
 
 class Controllerlivre{
 
@@ -14,7 +15,12 @@ class Controllerlivre{
     }
 
     public function create(){
-       twig::render('livre-create.php');
+        if( isset($_SESSION['admin']) && $_SESSION['admin']){
+            twig::render("livre-create.php");
+        }
+        else{
+            header('location:' . $GLOBALS["path"]);
+        }
     }
 
     public function store(){
@@ -40,6 +46,7 @@ class Controllerlivre{
         $livre = new ModelLivre;
         $update = $livre->update($_POST);
     }
+    
     public function delete(){
         $livre = new ModelLivre;
         $delete = $livre->delete($_POST);

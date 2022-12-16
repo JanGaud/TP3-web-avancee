@@ -30,8 +30,6 @@ class ControllerRegister{
         else{
             $_SESSION["error"] = "Le courriel fournit est déjà dans notre base de donnée!";
             header('location:' . $GLOBALS["path"] . 'register');
-        }
-
-        
+        }      
     }
 }
