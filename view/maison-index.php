@@ -18,10 +18,10 @@
 {% if session['admin']%}
   {% for maison in maisons %}
         <tr>
-            <td>{{ maisons.nom_maison_edition }}</td>
-            <td>{{ maisons.adresse }}</td>
-            <td>{{ maisons.maison_edition_telephone }}</td>
-            <td class="d-flex justify-content-between">{{ maisons.maison_edition_courriel }}
+            <td>{{ maison.nom_maison_edition }}</td>
+            <td>{{ maison.adresse }}</td>
+            <td>{{ maison.maison_edition_telephone }}</td>
+            <td class="d-flex justify-content-between">{{ maison.maison_edition_courriel }}
             <div> 
               <a href="#" class="btn btn-outline-dark text-center" role="button">Modifier</a>
               <a href="#" class="btn btn-outline-danger text-center" role="button">Supprimer</a>
@@ -33,10 +33,10 @@
 {% else %}
     {% for maison in maisons %}
         <tr>
-          <td>{{ maisons.nom_maison_edition }}</td>
-          <td>{{ maisons.adresse }}</td>
-          <td>{{ maisons.maison_edition_telephone }}</td>
-          <td>{{ maisons.maison_edition_courriel }}</td>
+          <td>{{ maison.nom_maison_edition }}</td>
+          <td>{{ maison.adresse }}</td>
+          <td>{{ maison.maison_edition_telephone }}</td>
+          <td>{{ maison.maison_edition_courriel }}</td>
         </tr>
       {% endfor %}
 {% endif %}

@@ -10,7 +10,7 @@ class ControllerMaison{
         $maison = new ModelMaison;
         $select = $maison->select("idMaison_edition");
         twig::render("maison-index.php", ['maisons' => $select, 
-                                        'maison_list' => "Liste de maisons"]);
+                                         'maison_list' => "Liste de maisons"]);
         }
         else{
             header('location:' . $GLOBALS["path"]);

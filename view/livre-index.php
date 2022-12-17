@@ -7,8 +7,6 @@
 <table class="table table-striped">
 <thead>
 
-  {{ serveur }}
-
     <tr>
       <th scope="col">Titre</th>
       <th scope="col">Edition</th>
@@ -31,6 +29,7 @@
             </div> 
             </td>  
         </tr> 
+        
     {% endfor %}
     {% else %}
       {% for livre in livres %}

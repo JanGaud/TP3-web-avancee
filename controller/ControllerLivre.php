@@ -1,6 +1,8 @@
 <?php
 RequirePage::requireModel('Crud');
 RequirePage::requireModel('ModelLivre');
+RequirePage::requireModel('ModelMaison');
+RequirePage::requireModel('ModelAuteur');
 require("library/config.php");
 
 class Controllerlivre{
@@ -15,8 +17,18 @@ class Controllerlivre{
     }
 
     public function create(){
+        $livre = new ModelLivre;
+        $auteur = new ModelAuteur;
+        $maison = new ModelMaison;
+        $selectLivre = $livre->select("idLivre");
+        $selectAuteur = $auteur->select("idAuteur");
+        $selectMaison = $maison->select("idMaison_edition");
+
         if( isset($_SESSION['admin']) && $_SESSION['admin']){
-            twig::render("livre-create.php");
+            twig::render("livre-create.php", ['livres' => $selectLivre,
+                                             'auteurs' => $selectAuteur,
+                                             'maisons' => $selectMaison,
+                                             'livre_list' => "Ajout de livres"]);
         }
         else{
             header('location:' . $GLOBALS["path"]);

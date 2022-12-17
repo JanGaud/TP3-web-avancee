@@ -7,7 +7,7 @@ class ModelLogUser extends Crud {
     protected $table = 'log_user';
 
     public function getSessions(){
-        $sql = "SELECT * FROM $this->table JOIN client ON idClient = id_client ORDER BY date LIMIT 30";
+        $sql = "SELECT * FROM $this->table JOIN client ON idClient = id_client ORDER BY id_client LIMIT 30";
         $stmt  = $this->query($sql);
         return  $stmt->fetchAll();
     }

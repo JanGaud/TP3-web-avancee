@@ -12,29 +12,29 @@
     <form action="{{ path }}livre/store" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="txt" id="titre" class="form-control" name="titre" />
             <label class="form-label" for="titre">Titre du Livre</label>
+            <input type="txt" id="titre" class="form-control" name="titre" />
         </div>
         <div class="form-outline mb-4">
             <label>Auteur
-                <select name="idAuteur">
+                <select name="livres.Auteur_idAuteur">
                     {% for auteur in auteurs %}
-                        <option value="{{ nom_auteur }}">{{ auteur.nom_auteur }}</option>
+                        <option value="{{ maison.Auteur_idAuteur }}">{{ auteur.nom_auteur }}</option>
                     {% endfor %}
                 </select>
             </label>
         </div>
 
         <div class="form-outline mb-4">
-            <input type="number" min="0" id="edition" class="form-control" name="edition" />
             <label class="form-label" for="edition">Edition du livre</label>
+            <input type="number" min="0" id="edition" class="form-control" name="edition" />
         </div>
 
         <div class="form-outline mb-4">
             <label>Maison d'edition
-                <select name="idMaison">
-                    {% for maison in maison_edition %}
-                        <option value="{{ nom_maison_edition }}">{{ maison.nom_maison_edition }}</option>
+                <select name="livres.Maison_edition_idMaison_edition">
+                    {% for maison in maisons %}
+                        <option value="{{ maison.Maison_edition_idMaison_edition }}">{{ maison.nom_maison_edition }}</option>
                     {% endfor %}
                 </select>
             </label>
