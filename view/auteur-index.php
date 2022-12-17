@@ -22,7 +22,6 @@
             </div>
           </td>    
         </tr> 
- 
 
   {% endfor %}
 
@@ -41,7 +40,7 @@
 </div>
 {% if session['admin']%}
 <div class="container text-center">
-  <a href="{{ path }}livre/create" class="btn btn-outline-success text-center" role="button">Ajouter un auteur</a>
+  <a href="{{ path }}auteur/create" class="btn btn-outline-success text-center" role="button">Ajouter un auteur</a>
 </div>
 {% endif %}
 {% endblock %}

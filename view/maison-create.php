@@ -6,23 +6,19 @@
 <div class="d-flex justify-content-center">
 <div class="card" style="width: 30rem;">
 <div class="card-header text-center bg-primary text-white">
-    Ajout d'un nouveau livre
+    Ajout de Maison d`édition
 </div>
   <div class="card-body">
-    <form action="{{ path }}livre/store" method="post">
+    <form action="{{ path }}maison/store" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="txt" id="titre" class="form-control" name="titre" />
+            <input type="txt" id="" class="form-control" name="titre" />
             <label class="form-label" for="titre">Titre du Livre</label>
         </div>
+
         <div class="form-outline mb-4">
-            <label>Auteur
-                <select name="idAuteur">
-                    {% for auteur in auteurs %}
-                        <option value="{{ nom_auteur }}">{{ auteur.nom_auteur }}</option>
-                    {% endfor %}
-                </select>
-            </label>
+            <input type="txt" id="auteur" class="form-control" name="auteur"/>
+            <label class="form-label" for="auter">Auteur du livre</label>
         </div>
 
         <div class="form-outline mb-4">
@@ -31,13 +27,12 @@
         </div>
 
         <div class="form-outline mb-4">
-            <label>Maison d'edition
-                <select name="idMaison">
-                    {% for maison in maison_edition %}
-                        <option value="{{ nom_maison_edition }}">{{ maison.nom_maison_edition }}</option>
-                    {% endfor %}
-                </select>
-            </label>
+            <select id="nom_maison_edition" class="form-control" name="nom_maison_edition">
+                {% for nom_maison_edition in maison_edition %}
+                    <option value="nom_maison_edition"> {{ maison_edition.nom_maison_edition }}</option>
+                {% endfor %}
+            </select>
+            <label class="form-label" for="">Maison d'édition</label>
         </div>
 
         <!-- Submit button -->

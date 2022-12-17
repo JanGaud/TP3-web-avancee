@@ -6,16 +6,17 @@
 <div class="d-flex justify-content-center">
 <div class="card" style="width: 30rem;">
 <div class="card-header text-center bg-primary text-white">
-    Inscription
+    Inscription 
 </div>
+
+
   <div class="card-body">
-    <form  action="{{ path }}Register/inscription" method="post">
+    <form  action="{{ path }}register/inscription" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
             <input type="txt" id="nom" class="form-control" name="nom_client" />
             <label class="form-label" for="nom">Nom</label>
         </div>
-
         <div class="form-outline mb-4">
             <input type="email" id="courriel" class="form-control" name="client_courriel"/>
             <label class="form-label" for="courriel">Courriel</label>

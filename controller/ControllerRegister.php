@@ -1,10 +1,12 @@
 <?php
     RequirePage::requireModel('Crud');
     RequirePage::requireModel('ModelClient');
+    require("service/LoginService.php");
     require("library/config.php");
 
 class ControllerRegister{
 
+    
     public function index(){
         $error = null;
         if(isset($_SESSION["error"])){
@@ -18,13 +20,13 @@ class ControllerRegister{
     public function inscription(){
         // print_r($_POST);
         $client = new ModelClient;
+        $service = new LoginService;
         $clientExistant = $client->selectClient($_POST["client_courriel"]);
 
         if($clientExistant == null){
             $_POST["mdp"] =  hash('sha256', $_POST['mdp']);
             $insert = $client->insert($_POST);
-            $_SESSION['compteActif'] = true;
-            $_SESSION['nomClient'] = $_POST["nom_client"];
+            $service->loginUser($_POST['nom_client']);
             header('Location:' . $GLOBALS["path"] . 'client');
         }
         else{

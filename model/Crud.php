@@ -16,6 +16,7 @@ abstract class Crud extends PDO {
     public function select($champ='id', $order='ASC' ){
         $sql = "SELECT * FROM $this->table ORDER BY $champ $order";
         $stmt  = $this->query($sql);
+        
         return  $stmt->fetchAll();
     }
 
@@ -54,10 +55,10 @@ abstract class Crud extends PDO {
             $champRequete .= "$key = :$key, ";
         }
         $champRequete = rtrim($champRequete, ", ");
-
         $sql = "UPDATE $table SET $champRequete WHERE $champId = :$champId";
-
+        
         $stmt = $this->prepare($sql);
+        // $stmt->bindValue(":$champId", )
         foreach($data as $key=>$value){
             $stmt->bindValue(":$key", $value);
         } 

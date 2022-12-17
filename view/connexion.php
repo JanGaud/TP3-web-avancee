@@ -15,7 +15,6 @@
             <input type="email" id="form2Example1" class="form-control" name="client_courriel"/>
             <label class="form-label" for="form2Example1">Courriel</label>
         </div>
-
         <!-- Password input -->
         <div class="form-outline mb-4">
             <input type="password" id="form2Example2" class="form-control" name="mdp"/>

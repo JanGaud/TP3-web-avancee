@@ -25,7 +25,7 @@ class ControllerAuteur{
      // print_r($_POST);
      $auteur = new ModelAuteur;
      $insert = $auteur->insert($_POST);
-    requirePage::redirectPage('{{ path }}auteur');
+     requirePage::redirectPage('{{ path }}auteur');
     }
 
     public function show($id){

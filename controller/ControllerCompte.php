@@ -1,11 +1,18 @@
 <?php
 RequirePage::requireModel('Crud');
 RequirePage::requireModel('ModelClient');
-requirePAge::requireModel('ModelLogUser');
+require("service/LoginService.php");
 require("library/config.php");
 
 
 class ControllerCompte{
+
+    private $loginService;
+
+    function __construct()
+    {
+        $this->loginService = new LoginService;
+    }
 
     public function index(){
         $error = null;
@@ -14,7 +21,7 @@ class ControllerCompte{
             $_SESSION["error"] = null;
         };
         
-        twig::render("connexion.php", ['page' => ["compte", "connexion"], 'error' => $error]);
+        twig::render("connexion.php", ['page' => ["compte", "connexion"], 'error' => $error, 'ip' =>$_SERVER['REMOTE_ADDR']]);
     }
 
 
@@ -22,7 +29,6 @@ class ControllerCompte{
 
 
     public function connexion(){
-        $modelLogUser = new ModelLogUser;
         $modelClient = new ModelClient;
         $_POST["mdp"] =  hash('sha256', $_POST['mdp']);
         $user = $modelClient->selectClient($_POST["client_courriel"]);
@@ -33,12 +39,7 @@ class ControllerCompte{
         else{
             $mdpValid = $_POST["mdp"] === $user["mdp"];
             if($mdpValid){
-                $_SESSION['compteActif'] = true;
-                $_SESSION['nomClient'] = $user['nom_client'];
-                $_SESSION['utilisateur'] = $user;
-                //on verie si cette opration est true ou false
-                $_SESSION['admin'] = $user['admin'];
-                $modelLogUser->logUserLoggedIn($user['idClient']);
+                $this->loginService->loginUser($user["nom_client"], $user);
                 header('Location:' . $GLOBALS["path"] . 'client');
             }
             else{
@@ -49,9 +50,7 @@ class ControllerCompte{
     }
 
     public function deconnexion(){
-        $modelLogUser = new ModelLogUser;
-        session_destroy();
-        $modelLogUser->logUserLoggedOut($_SESSION['utilisateur']['idClient']);
+        $this->loginService->logoutUser();
         header('Location:' . $GLOBALS["path"]);
     }
 }
